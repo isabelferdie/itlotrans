@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/product/">
   <script src="https://kit.fontawesome.com/07dd43733c.js" crossorigin="anonymous"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet" />
-
+  <link rel="icon" href="./res/favicon.ico">
 
 
   <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -69,11 +69,6 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .logo {
-      max-width: 40%;
-      max-height: 40%;
-    }
-
     .bgimg {
       background-image: url('./res/main.png');
       background-repeat: no-repeat;
@@ -98,10 +93,9 @@
 
   <header class="">
 
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a href="./index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img class="logo" src="./res/logo.png" alt="Logo">
+    <nav class="navbar navbar-expand-lg navbar-left">
+        <a href="./index.html" class="navbar-brand text-decoration-none">
+          <img src="./res/logopeque.png">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +109,7 @@
             <li><a href="./formacion.html" class="nav-link px-2 text-dark">Formación</a></li>
             <li><a href="./actualidad.html" class="nav-link px-2 text-dark">Actualidad</a></li>
             <li><a href="./sostenibilidad.html" class="nav-link px-2 text-dark">Sostenibilidad</a></li>
-            <li><a href="./nosotros.html" class="nav-link px-2 text-dark" style="white-space: nowrap;">Sobre
+            <li><a href="./nosotros.html" class="nav-link px-2 text-dark">Sobre
                 nosotros</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
@@ -128,8 +122,8 @@
             </li>
           </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Buscar..."
+          <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-light col-6 " placeholder="Buscar..."
               aria-label="Search">
           </form>
 
@@ -138,7 +132,6 @@
           <a href="registro.html" class="btn btn-warning">Registrarse</a>
 
         </div>
-      </div>
     </nav>
   </header>
 
@@ -338,11 +331,6 @@
 
 
   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(function () {
-      $('.selectpicker').selectpicker();
-    });
-  </script>
   <div class="position-sticky fixed-bottom p-3 float-end">
     <button class="btn btn-success">Chat <i class="fa-regular fa-comments "></i></button>
   </div>
