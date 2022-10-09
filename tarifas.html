@@ -83,6 +83,59 @@
       background-image: url('./res/sostenibilidad.png');
       background-repeat: no-repeat;
     }
+    .chat{
+      position: absolute;
+      bottom: 40;
+      left: 40;
+    }
+
+
+.chat-main-container {
+  min-width: 420px;
+  max-width: 540px;
+}
+#chat-wrapper {
+  min-height: 200px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.close-button {
+  opacity: 0.4;
+  transition: opacity 600ms ease;
+  cursor: pointer;
+}
+.close-button:hover {
+  opacity: 1;
+}
+
+.ol-viewport {
+  border-radius: 40px;
+}
+
+/* SCROLLBAR::width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* SCROLLBAR::Track */
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.25);
+}
+
+/* SCROLLBAR::Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.5); 
+}
+
+/* SCROLLBAR::Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.65); 
+}
+
+.funky {
+  border: 2px solid orange !important;
+}
   </style>
 
 
@@ -94,9 +147,8 @@
 
   <header class="">
 
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a href="./index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+    <nav class="navbar navbar-expand-lg navbar-left me-3">
+        <a href="./index.html" class="navbar-brand text-decoration-none">
           <img src="./res/logopeque.png">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -107,32 +159,33 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li><a href="./carga.html" class="nav-link px-2 text-dark">Cargas</a></li>
             <li><a href="./ruta.html" class="nav-link px-2 text-dark">Rutas</a></li>
-            <li><a href="./tarifas.html" class="nav-link px-2 text-primary fw-bold">Tarifas</a></li>
+            <li><a href="./tarifas.html" class="nav-link px-2  text-primary fw-bold">Tarifas</a></li>
             <li><a href="./formacion.html" class="nav-link px-2 text-dark">Formación</a></li>
             <li><a href="./actualidad.html" class="nav-link px-2 text-dark">Actualidad</a></li>
             <li><a href="./sostenibilidad.html" class="nav-link px-2 text-dark">Sostenibilidad</a></li>
-            <li><a href="./nosotros.html" class="nav-link px-2 text-dark" style="white-space: nowrap;">Sobre nosotros</a></li>
+            <li><a href="./nosotros.html" class="nav-link px-2 text-dark">Sobre
+                nosotros</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false"><span class="flag-icon flag-icon-es"> </span> Español</a>
-              <ul class="dropdown-menu">                
+              <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#ru"><span class="flag-icon flag-icon-gb"> </span> English</a></li>
                 <li><a class="dropdown-item" href="#it"><span class="flag-icon flag-icon-es"> </span> Español</a></li>
                 <li><a class="dropdown-item" href="#fr"><span class="flag-icon flag-icon-fr"> </span> Français</a></li>
               </ul>
             </li>
           </ul>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Buscar..."
+
+          <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-light col-6 " placeholder="Buscar..."
               aria-label="Search">
           </form>
 
 
           <a href="login.html" class="btn btn-outline-dark me-2">Entrar</a>
-          <a href = "registro.html" class="btn btn-warning">Registrarse</a>
+          <a href="registro.html" class="btn btn-warning">Registrarse</a>
 
         </div>
-      </div>
     </nav>
   </header>
 
@@ -228,8 +281,8 @@
       <div class="col-6 col-md">
         <h5>Contacto</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="#">600 900 100</a></li>
-          <li><a class="link-secondary" href="#">itlotrans@gmail.com</a></li>
+          <li><a class="link-secondary" href="#">667 882 159</a></li>
+          <li><a class="link-secondary" href="#">info@itlotrans.com</a></li>
 
         </ul>
       </div>
@@ -239,9 +292,112 @@
 
   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <div class="position-sticky fixed-bottom p-3 float-end">
-    <button class="btn btn-success">Chat <i class="fa-regular fa-comments "></i></button>
+  <div class="position-sticky fixed-bottom p-3 float-end ">
+    <div id="chat-container" class="chat-main-container bg-success pt-3 text-white mt-5 rounded shadow hidden pb-3">
+  
+      <div class="row px-4">
+        <div class="col-8 p-0">
+          <h2><i class="fas fa-comment-dots"></i> Soporte</h2>
+        </div>
+        <div class="col text-right pr-0">
+          <i class="close-button far fa-times-circle"></i>
+        </div>
+        <hr class="col-12 mb-0">
+      </div>
+      
+      <!--   CHAT WRAPPER -->
+      <div id="chat-wrapper" class="row px-4 pb-4 d-flex flex-column-reverse flex-nowrap">
+        
+        <input disabled class="col-8 message offset-4 mt-3 rounded rounded-pill rounded-lg border shadow bg-primary text-white p-3 pl-4" value="Escriba y pulse Enter">
+    
+        <input disabled class="chat-left message col-8 mt-3 rounded rounded-pill rounded-lg border-0 shadow bg-white text-dark p-3 pl-4" value="Hola, ¿qué necesitas?">
+      
+      </div>
+    
+      <!-- INPUT & CREDS -->
+      <div class="row px-4 pt-4 rounded-bottom">
+    
+        <input id="interface" type="text" class="col rounded rounded-pill bg-light p-3 text-left border-0" placeholder=" Escribe tu mensaje...">
+    
+ 
+          <!-- Chat Bubble Template -->
+          <input style="display:none;" class="chat-right message col-8 offset-4 mt-3 rounded rounded-pill rounded-lg border shadow  bg-primary text-white p-3 pl-4" value="Hello, what's up?">
+    
+      </div>
+    
+    
+    </div>
+    <button class="btn btn-success chat-button">Chat <i class="fa-regular fa-comments "></i></button>
   </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>function handleKeyDown( event ){
 
+  if ( event.keyCode === 13 ){
+    
+    // Handle MAP command
+    if ( this.value.trim().indexOf("map:") === 0 ){
+      
+      let country = this.value.split( "map:")[1].trim();
+
+      $.ajax({
+        url: "https://restcountries.eu/rest/v2/name/" + country,
+        success: function( data ){
+          console.log( data );
+          
+
+          $(".chat-left")
+            .clone( true )
+            .removeClass( "chat-left" )
+            .val("Map of " + country + " coming up!")
+            .attr("disabled",true)
+            .prependTo("#chat-wrapper")
+            .show('slow');    
+
+          
+          $("<div id='map' class='col-12 my-4'></div>")
+            .prependTo( $("#chat-wrapper") );
+            openMap({ lon: data[0].latlng[1], lat: data[0].latlng[0] });
+        }
+      });
+      
+    } else {
+
+      $(".chat-right")
+        .clone( true )
+        .removeClass( "chat-right" )
+        .val( this.value )
+        .attr("disabled",true)
+        .prependTo("#chat-wrapper")
+        .show('fast');    
+
+    }
+
+    $("#interface").val(" ");
+
+  }
+  
+}
+$("#chat-container").hide();
+
+// Listen on the user's input:
+$("#interface").on("keydown", handleKeyDown );
+
+// Close the Chat Interface:
+$(".close-button").click(function(){
+
+  $("#chat-container").fadeOut(function() {
+    $(".chat-button").fadeIn(1000);
+});
+  
+});
+
+$(".chat-button").click(function(){
+
+$("#chat-container").fadeIn();
+$(".chat-button").hide();
+
+});
+
+</script>
 </html>
